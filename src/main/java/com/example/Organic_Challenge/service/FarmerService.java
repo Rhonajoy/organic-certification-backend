@@ -38,18 +38,19 @@ public class FarmerService {
                 .map(this::toFarmerResponseDto);
 
     }
-    public Page<FarmerResponseDto> getCompleteFarmers(Pageable pageable) {
 
-        return farmerRepository.findCompleteFarmers(pageable)
-        .map(this::toFarmerWithFarmsDto);
-    }
+    //    public Page<FarmerResponseDto> getCompleteFarmers(Pageable pageable) {
+//
+//        return farmerRepository.findCompleteFarmers(pageable)
+//        .map(this::toFarmerWithFarmsDto);
+//    }
     public FarmerResponseDto getFarmerById(Long id) {
-        Farmer farmer = farmerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Farmer not found with ID"+id));
+        Farmer farmer = farmerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Farmer not found with ID" + id));
         return toFarmerResponseDto(farmer);
     }
 
     public FarmerResponseDto updateFarmer(Long id, CreateFarmerDto dto) {
-        Farmer farmer = farmerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Farmer not found with ID"+id));
+        Farmer farmer = farmerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Farmer not found with ID" + id));
         farmer.setName(dto.getName());
         farmer.setPhone(dto.getPhone());
         farmer.setEmail(dto.getEmail());
@@ -72,6 +73,7 @@ public class FarmerService {
         dto.setCounty(farmer.getCounty());
         return dto;
     }
+
     private FarmerResponseDto toFarmerWithFarmsDto(Farmer farmer) {
         FarmerResponseDto dto = new FarmerResponseDto();
         dto.setId(farmer.getId());
@@ -79,35 +81,37 @@ public class FarmerService {
         dto.setEmail(farmer.getEmail());
         dto.setPhone(farmer.getPhone());
         dto.setCounty(farmer.getCounty());
-
-        // Map farms
-        List<FarmResponseDto> farmDTOs = farmer.getFarms().stream()
-                .filter(farm -> farm.getFields() != null && !farm.getFields().isEmpty()) // only include farms with fields
-                .map(farm -> {
-                    List<FieldResponseDto> fieldDTOs = farm.getFields().stream()
-                            .map(field -> new FieldResponseDto(
-                                    field.getId(),
-                                    field.getName(),
-                                    field.getCrop(),
-                                    field.getAreaHa(),
-                                    field.getFarm().getId() // Assuming there's a getFarm() method
-                            ))
-                            .collect(Collectors.toList());
-
-                    FarmResponseDto farmDto = new FarmResponseDto();
-                    farmDto.setId(farm.getId());
-                    farmDto.setFarmName(farm.getFarmName());
-                    farmDto.setLocation(farm.getLocation());
-                    farmDto.setAreaHa(farm.getAreaHa());
-                    farmDto.setFields(fieldDTOs);
-                    return farmDto;
-                })
-                .collect(Collectors.toList());
-
-        dto.setFarms(farmDTOs);
-        return dto;
+        return  dto;
     }
 }
+        // Map farms
+//        List<FarmResponseDto> farmDTOs = farmer.getFarms().stream()
+//                .filter(farm -> farm.getFields() != null && !farm.getFields().isEmpty()) // only include farms with fields
+//                .map(farm -> {
+//                    List<FieldResponseDto> fieldDTOs = farm.getFields().stream()
+//                            .map(field -> new FieldResponseDto(
+//                                    field.getId(),
+//                                    field.getName(),
+//                                    field.getCrop(),
+//                                    field.getAreaHa(),
+//                                    field.getFarm().getId() // Assuming there's a getFarm() method
+//                            ))
+//                            .collect(Collectors.toList());
+//
+//                    FarmResponseDto farmDto = new FarmResponseDto();
+//                    farmDto.setId(farm.getId());
+//                    farmDto.setFarmName(farm.getFarmName());
+//                    farmDto.setLocation(farm.getLocation());
+//                    farmDto.setAreaHa(farm.getAreaHa());
+//                    farmDto.setFields(fieldDTOs);
+//                    return farmDto;
+//                })
+//                .collect(Collectors.toList());
+//
+//        dto.setFarms(farmDTOs);
+//        return dto;
+//    }
+
 
 
 

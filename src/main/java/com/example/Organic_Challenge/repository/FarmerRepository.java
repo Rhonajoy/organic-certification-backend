@@ -11,13 +11,13 @@ import java.util.List;
 
 @Repository
 public interface FarmerRepository  extends JpaRepository<Farmer,Long> {
-    @Query(value = "SELECT DISTINCT f FROM Farmer f " +
-                  "JOIN f.farms fa " +
-                  "JOIN fa.fields fi",
-          countQuery = "SELECT COUNT(DISTINCT f) FROM Farmer f " +
-                  "JOIN f.farms fa " +
-                  "JOIN fa.fields fi")
-        Page<Farmer> findCompleteFarmers(Pageable pageable);
+//    @Query(value = "SELECT DISTINCT f FROM Farmer f " +
+//                  "JOIN f.farms fa " +
+//                  "JOIN fa.fields fi",
+//          countQuery = "SELECT COUNT(DISTINCT f) FROM Farmer f " +
+//                  "JOIN f.farms fa " +
+//                  "JOIN fa.fields fi")
+//        Page<Farmer> findCompleteFarmers(Pageable pageable);
     }
 
 

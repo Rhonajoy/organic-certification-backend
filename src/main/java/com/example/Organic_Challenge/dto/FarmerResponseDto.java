@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 
@@ -16,5 +14,5 @@ public class FarmerResponseDto {
     private String phone;
     private String email;
     private String county;
-    private List<FarmResponseDto> farms;
+
 }

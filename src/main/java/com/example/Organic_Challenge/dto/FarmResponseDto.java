@@ -10,5 +10,5 @@ public class FarmResponseDto {
     private String farmName;
     private String location;
     private Double areaHa;
-    private List<FieldResponseDto> fields;
+
 }
