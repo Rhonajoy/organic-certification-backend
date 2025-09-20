@@ -31,14 +31,7 @@ public class FarmerController {
         return  ResponseEntity.ok(farmerService.getAllFarmers(pageable));
     }
 
-    @GetMapping("/complete")
-    public Page<FarmerResponseDto> getCompleteFarmers(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
 
-        Pageable pageable = PageRequest.of(page, size);
-        return farmerService.getCompleteFarmers(pageable);
-    }
     @GetMapping("/{id}")
     public ResponseEntity<FarmerResponseDto> getFarmerById(@PathVariable Long id) {
         FarmerResponseDto farmer = farmerService.getFarmerById(id);
