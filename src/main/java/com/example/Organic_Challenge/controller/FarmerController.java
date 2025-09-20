@@ -2,6 +2,7 @@ package com.example.Organic_Challenge.controller;
 
 import com.example.Organic_Challenge.dto.CreateFarmerDto;
 import com.example.Organic_Challenge.dto.FarmerResponseDto;
+import com.example.Organic_Challenge.entity.Farmer;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,6 +31,14 @@ public class FarmerController {
         return  ResponseEntity.ok(farmerService.getAllFarmers(pageable));
     }
 
+    @GetMapping("/complete")
+    public Page<Farmer> getCompleteFarmers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+        return farmerService.getCompleteFarmers(pageable);
+    }
     @GetMapping("/{id}")
     public ResponseEntity<FarmerResponseDto> getFarmerById(@PathVariable Long id) {
         FarmerResponseDto farmer = farmerService.getFarmerById(id);

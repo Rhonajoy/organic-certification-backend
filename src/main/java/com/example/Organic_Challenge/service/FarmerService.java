@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.example.Organic_Challenge.repository.FarmerRepository;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class FarmerService {
@@ -27,6 +29,9 @@ public class FarmerService {
         return farmerRepository.findAll(pageable)
                 .map(this::toFarmerResponseDto);
 
+    }
+    public Page<Farmer> getCompleteFarmers(Pageable pageable) {
+        return farmerRepository.findCompleteFarmers(pageable);
     }
     public FarmerResponseDto getFarmerById(Long id) {
         Farmer farmer = farmerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Farmer not found with ID"+id));
