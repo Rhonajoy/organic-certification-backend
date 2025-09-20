@@ -9,6 +9,5 @@ public class CreateInspectionDto {
     @NotNull(message = "Farm ID is required")
     private Long farmId;
 
-    @NotBlank(message = "Inspector name is required")
-    private String inspectorName;
+
 }
