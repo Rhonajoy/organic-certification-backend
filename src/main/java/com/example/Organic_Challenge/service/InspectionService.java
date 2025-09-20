@@ -27,7 +27,7 @@ public class InspectionService {
         Inspection inspection = new Inspection();
         inspection.setFarm(farm);
         inspection.setDate(LocalDate.now());
-        inspection.setInspectorName(dto.getInspectorName());
+
         inspection.setStatus(InspectionStatus.DRAFT);
         Inspection savedInspection = inspectionRepository.save(inspection);
 
@@ -63,7 +63,7 @@ public class InspectionService {
         responseDto.setId(submittedInspection.getId());
         responseDto.setFarmId(submittedInspection.getFarm().getId());
         responseDto.setDate(submittedInspection.getDate());
-        responseDto.setInspectorName(submittedInspection.getInspectorName());
+
         responseDto.setStatus(submittedInspection.getStatus());
         responseDto.setComplianceScore(submittedInspection.getComplianceScore());
         return responseDto;
