@@ -32,7 +32,7 @@ public class FarmerController {
     }
 
     @GetMapping("/complete")
-    public Page<Farmer> getCompleteFarmers(
+    public Page<FarmerResponseDto> getCompleteFarmers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 
