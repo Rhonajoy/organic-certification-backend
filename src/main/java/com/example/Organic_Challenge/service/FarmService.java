@@ -62,15 +62,7 @@ public class FarmService {
         dto.setFarmName(farm.getFarmName());
         dto.setLocation(farm.getLocation());
         dto.setAreaHa(farm.getAreaHa());
-        FarmerResponseDto farmerDto = new FarmerResponseDto(
 
-                farm.getFarmer().getId(),
-                farm.getFarmer().getName(),
-                farm.getFarmer().getPhone(),
-                farm.getFarmer().getEmail(),
-                farm.getFarmer().getCounty()
-        );
-        dto.setFarmer(farmerDto);
         return dto;
     }
 }
