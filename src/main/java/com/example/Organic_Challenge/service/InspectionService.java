@@ -50,7 +50,7 @@ public class InspectionService {
 
         inspection.setComplianceScore(score);
         if (score >= MIN_COMPLIANCE_SCORE) {
-            inspection.setStatus(InspectionStatus.SUBMITTED);
+            inspection.setStatus(InspectionStatus.APPROVED);
         } else {
             inspection.setStatus(InspectionStatus.REJECTED);
         }
