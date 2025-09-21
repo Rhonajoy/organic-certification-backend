@@ -19,6 +19,5 @@ public class Farm {
     private String farmName;
     private String location;
     private Double areaHa;
-//    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private java.util.List<Field> fields = new java.util.ArrayList<>();
+
 }

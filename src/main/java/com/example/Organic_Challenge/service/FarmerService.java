@@ -39,11 +39,6 @@ public class FarmerService {
 
     }
 
-    //    public Page<FarmerResponseDto> getCompleteFarmers(Pageable pageable) {
-//
-//        return farmerRepository.findCompleteFarmers(pageable)
-//        .map(this::toFarmerWithFarmsDto);
-//    }
     public FarmerResponseDto getFarmerById(Long id) {
         Farmer farmer = farmerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Farmer not found with ID" + id));
         return toFarmerResponseDto(farmer);
@@ -84,33 +79,7 @@ public class FarmerService {
         return  dto;
     }
 }
-        // Map farms
-//        List<FarmResponseDto> farmDTOs = farmer.getFarms().stream()
-//                .filter(farm -> farm.getFields() != null && !farm.getFields().isEmpty()) // only include farms with fields
-//                .map(farm -> {
-//                    List<FieldResponseDto> fieldDTOs = farm.getFields().stream()
-//                            .map(field -> new FieldResponseDto(
-//                                    field.getId(),
-//                                    field.getName(),
-//                                    field.getCrop(),
-//                                    field.getAreaHa(),
-//                                    field.getFarm().getId() // Assuming there's a getFarm() method
-//                            ))
-//                            .collect(Collectors.toList());
-//
-//                    FarmResponseDto farmDto = new FarmResponseDto();
-//                    farmDto.setId(farm.getId());
-//                    farmDto.setFarmName(farm.getFarmName());
-//                    farmDto.setLocation(farm.getLocation());
-//                    farmDto.setAreaHa(farm.getAreaHa());
-//                    farmDto.setFields(fieldDTOs);
-//                    return farmDto;
-//                })
-//                .collect(Collectors.toList());
-//
-//        dto.setFarms(farmDTOs);
-//        return dto;
-//    }
+
 
 
 

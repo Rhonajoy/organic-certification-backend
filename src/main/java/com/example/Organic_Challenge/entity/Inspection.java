@@ -20,7 +20,6 @@ public class Inspection {
     @JoinColumn(name = "farm_id")
     private Farm farm;
     private LocalDate date;
-    private String inspectorName;
     @Enumerated(EnumType.STRING)
     private  InspectionStatus status;
     private Double complianceScore;
