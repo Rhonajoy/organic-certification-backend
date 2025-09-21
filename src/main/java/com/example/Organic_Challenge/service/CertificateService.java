@@ -46,7 +46,7 @@ public class CertificateService {
         Inspection latestInspection = latestInspectionOpt.get();
 
 
-        if (!"Approved".equals(latestInspection.getStatus())) {
+        if (!"APPROVED".equals(latestInspection.getStatus())) {
             throw new RuntimeException("Farm is not approved for organic certification. Compliance score: " + latestInspection.getComplianceScore() + "%");
         }
 
