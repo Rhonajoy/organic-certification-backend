@@ -69,12 +69,31 @@ public class CertificateService {
 
     document.close();
 
-    Certificate certificate = new Certificate();
-    certificate.setFarm(farm);
-    certificate.setCertificateNo(certificateNumber);
-    certificate.setIssueDate(LocalDate.now());
-    certificate.setExpiryDate(LocalDate.now().plusYears(1));
-    certificate.setPdfUrl(filePath);
+        Optional<Certificate> existing = certificateRepository.findByFarmId(farm.getId());
+
+        Certificate certificate;
+        if (existing.isPresent()) {
+            certificate = existing.get();
+            certificate.setCertificateNo(certificateNumber);
+            certificate.setIssueDate(LocalDate.now());
+            certificate.setExpiryDate(LocalDate.now().plusYears(1));
+            certificate.setPdfUrl(filePath);
+        } else {
+            certificate = new Certificate();
+            certificate.setFarm(farm);
+            certificate.setCertificateNo(certificateNumber);
+            certificate.setIssueDate(LocalDate.now());
+            certificate.setExpiryDate(LocalDate.now().plusYears(1));
+            certificate.setPdfUrl(filePath);
+        }
+
+
+//        Certificate certificate = new Certificate();
+//    certificate.setFarm(farm);
+//    certificate.setCertificateNo(certificateNumber);
+//    certificate.setIssueDate(LocalDate.now());
+//    certificate.setExpiryDate(LocalDate.now().plusYears(1));
+//    certificate.setPdfUrl(filePath);
 
     Certificate saved = certificateRepository.save(certificate);
 
