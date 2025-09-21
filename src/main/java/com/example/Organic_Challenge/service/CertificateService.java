@@ -36,15 +36,22 @@ public class CertificateService {
     public CertificateResponseDto generateCertificate(CreateCertificateDto dto) throws DocumentException, IOException {
         Farm farm = farmRepository.findById(dto.getFarmId()).orElseThrow(() -> new  ResourceNotFoundException("Farm not found"));
 
-        Optional<Inspection> latestInspectionOpt = inspectionRepository.findByFarmId(farm.getId())
-                .stream()
-                .max(Comparator.comparing(Inspection::getDate));
+//        Optional<Inspection> latestInspectionOpt = inspectionRepository.findByFarmId(farm.getId())
+//                .stream()
+//                .max(Comparator.comparing(Inspection::getDate));
 
-        if (latestInspectionOpt.isEmpty()) {
-            throw new RuntimeException("No inspections found for this farm.");
+        Inspection latestInspection = inspectionRepository.findTopByFarmIdOrderByDateDesc(farm.getId());
+
+
+        if (latestInspection == null) {
+            throw new RuntimeException("No inspection found for this farm.");
         }
 
-        Inspection latestInspection = latestInspectionOpt.get();
+//        if (latestInspectionOpt.isEmpty()) {
+//            throw new RuntimeException("No inspections found for this farm.");
+//        }
+
+//        Inspection latestInspection = latestInspectionOpt.get();
 
 
         if (latestInspection.getStatus() != InspectionStatus.APPROVED)  {

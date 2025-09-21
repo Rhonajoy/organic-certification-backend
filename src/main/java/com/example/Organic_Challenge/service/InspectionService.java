@@ -56,7 +56,9 @@ public class InspectionService {
         }
 
 
-        Inspection submittedInspection = inspectionRepository.save(inspection);
+//        Inspection submittedInspection = inspectionRepository.save(inspection);
+        Inspection submittedInspection = inspectionRepository.saveAndFlush(inspection);
+
 
 
         InspectionResponseDto responseDto = new InspectionResponseDto();
