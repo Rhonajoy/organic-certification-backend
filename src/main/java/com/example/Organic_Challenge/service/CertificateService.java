@@ -17,6 +17,7 @@ import com.example.Organic_Challenge.repository.FarmRepository;
 import com.example.Organic_Challenge.repository.InspectionRepository;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -121,7 +122,12 @@ public CertificateResponseDto generateCertificate(CreateCertificateDto dto) thro
 
     Farm farm = inspection.getFarm(); // get farm directly from inspection
 
-    String filePath = "certificates/organic_certificate_" + dto.getInspectionId() + ".pdf";
+    String folderPath = "certificates";
+    File folder = new File(folderPath);
+    if (!folder.exists()) {
+        folder.mkdirs(); // create the folder if missing
+    }
+    String filePath = folderPath + "/organic_certificate_" + dto.getInspectionId() + ".pdf";
     Document document = new Document();
     PdfWriter.getInstance(document, new FileOutputStream(filePath));
     document.open();
