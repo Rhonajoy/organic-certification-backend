@@ -62,7 +62,7 @@ public class CertificateService {
     document.add(new Paragraph("Farm Area: " + farm.getAreaHa()));
     document.add(new Paragraph("Checklist Score: " + inspection.getComplianceScore() + "%"));
 
-    String certificateNumber = "ORG-CERT-" + UUID.randomUUID();
+    String certificateNumber = String.valueOf(UUID.randomUUID());
     document.add(new Paragraph("Certificate Number: " + certificateNumber));
     document.add(new Paragraph("Issue Date: " + LocalDate.now()));
     document.add(new Paragraph("Expiry Date: " + LocalDate.now().plusYears(1)));
@@ -88,12 +88,7 @@ public class CertificateService {
         }
 
 
-//        Certificate certificate = new Certificate();
-//    certificate.setFarm(farm);
-//    certificate.setCertificateNo(certificateNumber);
-//    certificate.setIssueDate(LocalDate.now());
-//    certificate.setExpiryDate(LocalDate.now().plusYears(1));
-//    certificate.setPdfUrl(filePath);
+
 
     Certificate saved = certificateRepository.save(certificate);
 

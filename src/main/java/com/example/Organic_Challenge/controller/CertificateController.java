@@ -27,11 +27,7 @@ public class CertificateController {
     @Autowired
     CertificateRepository certificateRepository;
 
-//    @PostMapping
-//    public ResponseEntity<CertificateResponseDto> generateCertificate(@RequestBody CreateCertificateDto dto) throws DocumentException, IOException {
-//        CertificateResponseDto certificate = certificateService.generateCertificate(dto);
-//        return new ResponseEntity<>(certificate, HttpStatus.CREATED);
-//    }
+
 @PostMapping
 public ResponseEntity<CertificateResponseDto> generateCertificate(@RequestBody CreateCertificateDto dto) throws Exception {
     return ResponseEntity.ok(certificateService.generateCertificate(dto));
