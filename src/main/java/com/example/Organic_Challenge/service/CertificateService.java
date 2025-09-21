@@ -1,5 +1,6 @@
 package com.example.Organic_Challenge.service;
 
+import com.example.Organic_Challenge.entity.InspectionStatus;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Paragraph;
@@ -46,7 +47,7 @@ public class CertificateService {
         Inspection latestInspection = latestInspectionOpt.get();
 
 
-        if (!"APPROVED".equals(latestInspection.getStatus())) {
+        if (latestInspection.getStatus() != InspectionStatus.APPROVED)  {
             throw new RuntimeException("Farm is not approved for organic certification. Compliance score: " + latestInspection.getComplianceScore() + "%");
         }
 
