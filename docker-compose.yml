@@ -1,0 +1,45 @@
+services:
+  app:
+    build: .
+    container_name: organic-challenge
+    ports:
+      - "8080:8080"
+    environment:
+      # Cloud database (default)
+      SPRING_DATASOURCE_URL: jdbc:postgresql://ballast.proxy.rlwy.net:10054/railway
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: IKsdgBfIYttVZNShrYwAXFqvlIljfyie
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+  # ----------------------------------------
+  # OPTIONAL: Uncomment this block if you want
+  # to run a local PostgreSQL instance instead
+  # ----------------------------------------
+  # postgres:
+  #   image: postgres:15
+  #   container_name: organic-db
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: organic_user
+  #     POSTGRES_PASSWORD: organic_pass
+  #     POSTGRES_DB: organic_challenge
+  #   ports:
+  #     - "5433:5432"   # mapped to 5433 to avoid conflicts
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #
+  # app:
+  #   build: .
+  #   container_name: organic-challenge
+  #   depends_on:
+  #     - postgres
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/organic_challenge
+  #     SPRING_DATASOURCE_USERNAME: organic_user
+  #     SPRING_DATASOURCE_PASSWORD: organic_pass
+  #     SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+volumes:
+  postgres_data:
