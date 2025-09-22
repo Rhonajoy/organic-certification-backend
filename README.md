@@ -23,7 +23,7 @@ It provides REST APIs for managing farmers, farms, fields, and inspection workfl
 
 ---
 
-## 🛠 Getting Started
+##  Getting Started
 
 ### 1. Clone the repository
 ```bash
@@ -48,5 +48,6 @@ https://organic-certification-backend-production.up.railway.app/swagger-ui/index
 ## License
 
 This project is licensed under the MIT License – free to use and modify.
+
 
 
