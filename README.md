@@ -32,7 +32,7 @@ cd organic-certification-backend
 
 ### 2. Build the jar
 ```bash
-./mvnw clean package -DskipTests
+./mvn clean package -DskipTests
 ```
 ##  Run with Docker
 
@@ -48,6 +48,7 @@ https://organic-certification-backend-production.up.railway.app/swagger-ui/index
 ## License
 
 This project is licensed under the MIT License – free to use and modify.
+
 
 
 
